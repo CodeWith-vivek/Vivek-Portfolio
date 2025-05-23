@@ -52,6 +52,8 @@ body {
 section {
   width: 100dvw;
   min-height: 100dvh;
+  padding-left: 50px;
+  padding-right: 50px
 }
 
 @layer utilities {
