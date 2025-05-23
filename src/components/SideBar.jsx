@@ -42,21 +42,23 @@ const SideBar = () => {
   }, [isOpen]);
 
   const handleNavClick = () => {
+
     const tl = gsap.timeline();
     tl.to(".side-bar-bg", {
       x: "100%",
       opacity: 0,
       ease: "power2.inOut",
-      duration: 0.6,
+      duration: 0.6, 
     });
     tl.to(".side-bar-item", {
       opacity: 0,
       duration: 0.3,
     });
 
+
     setTimeout(() => {
       setIsOpen(false);
-    }, 800);
+    }, 800); 
   };
 
   return (
@@ -64,14 +66,12 @@ const SideBar = () => {
       <div className="fixed z-[100] top-7 right-5" onClick={toggleSideBar}>
         <img src="images/menu-icon.png" alt="menu" />
       </div>
-      <div className="fixed z-[100] -translate-x-[100%] w-screen h-dvh side-bar-bg bg-white">
+      <div className="fixed z-[100] -translate-x-[100%] w-screen h-dvh side-bar-bg">
         <div className="flex justify-end m-5" onClick={toggleSideBar}>
           <img src="images/x.png" alt="close" />
         </div>
-
-        {/* Content container with vh spacing */}
-        <div className="flex flex-col justify-between h-[85vh] mt-[5vh] px-6">
-          <div className="flex flex-col items-center gap-6">
+        <div className="mt-20 px-10">
+          <div className="flex flex-col items-center gap-20">
             {navItems.map((item, index) => (
               <div
                 key={index}
@@ -79,7 +79,7 @@ const SideBar = () => {
                 onClick={handleNavClick}
               >
                 <a
-                  className="gradient-title text-xl font-semibold"
+                  className="gradient-title text-2xl font-bold"
                   href={item.href}
                 >
                   {item.name}
@@ -87,30 +87,29 @@ const SideBar = () => {
               </div>
             ))}
           </div>
-
-          <div className="flex justify-center gap-4 mt-10">
-            <a
-              href="https://github.com/your-username"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaGithub className="text-xl hover:text-gray-500 transition-colors duration-300" />
-            </a>
-            <a
-              href="https://linkedin.com/in/your-username"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaLinkedin className="text-xl hover:text-blue-600 transition-colors duration-300" />
-            </a>
-            <a
-              href="https://instagram.com/your-username"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaInstagram className="text-xl hover:text-pink-500 transition-colors duration-300" />
-            </a>
-          </div>
+        </div>
+        <div className="flex justify-center gap-6 mb-10 mt-20">
+          <a
+            href="https://github.com/your-username"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaGithub className="text-2xl hover:text-gray-500 transition-colors duration-300" />
+          </a>
+          <a
+            href="https://linkedin.com/in/your-username"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaLinkedin className="text-2xl hover:text-blue-600 transition-colors duration-300" />
+          </a>
+          <a
+            href="https://instagram.com/your-username"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaInstagram className="text-2xl hover:text-pink-500 transition-colors duration-300" />
+          </a>
         </div>
       </div>
     </div>
