@@ -127,7 +127,7 @@ const Carousel = () => {
                     </div>
 
                     {slide.description && (
-                      <p className="text-xs text-white-50 opacity-70 mt-1 md:w-[35vw] w-[50vw] line-clamp-2 mt-2">
+                      <p className="text-[8px] md:text-xs text-white-50 opacity-70 mt-2 md:w-[35vw] w-[50vw] line-clamp-2">
                         {slide.description}
                       </p>
                     )}
@@ -137,7 +137,7 @@ const Carousel = () => {
                         {slide.stacks.map((stack, i) => (
                           <span
                             key={i}
-                            className="text-[9px] px-1.5 py-0.5 rounded-full bg-gray-100 text-black-100 font-medium"
+                            className="text-[7px] md:text-[9px] px-1 py-0.5 rounded-full bg-gray-100 text-black-100 font-medium"
                           >
                             {stack}
                           </span>
@@ -155,13 +155,13 @@ const Carousel = () => {
       <div className="mt-10 text-white-50 flex justify-end gap-5 md:-translate-x-32 -translate-x-5">
         <div
           onClick={prevSlide}
-          className="rounded-full cursor-pointer bg-blue-50 hover:bg-red-100 active:scale-90 transition-all w-12 h-12 flex-center"
+          className="rounded-full cursor-pointer bg-black hover:bg-red active:scale-90 transition-all w-12 h-12 flex-center"
         >
           <FaCaretLeft className="w-5 h-5 text-white-50" />
         </div>
         <div
           onClick={nextSlide}
-          className="rounded-full cursor-pointer bg-blue-50 hover:bg-red-100 active:scale-90 transition-all w-12 h-12 flex-center"
+          className="rounded-full cursor-pointer bg-black hover:bg-red active:scale-90 transition-all w-12 h-12 flex-center"
         >
           <FaCaretRight className="w-5 h-5 text-white-50" />
         </div>
