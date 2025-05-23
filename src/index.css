@@ -52,8 +52,14 @@ body {
 section {
   width: 100dvw;
   min-height: 100dvh;
-  padding-left: 50px;
-  padding-right: 50px
+
+}
+
+@media (min-width: 768px) {
+  section {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
 }
 
 @layer utilities {

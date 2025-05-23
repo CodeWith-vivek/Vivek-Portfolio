@@ -70,8 +70,8 @@ const SideBar = () => {
         <div className="flex justify-end m-5" onClick={toggleSideBar}>
           <img src="images/x.png" alt="close" />
         </div>
-        <div className="mt-20 px-10">
-          <div className="flex flex-col items-center gap-20">
+        <div className="mt-5 px-10">
+          <div className="flex flex-col items-center gap-7">
             {navItems.map((item, index) => (
               <div
                 key={index}

@@ -66,7 +66,6 @@ const Hero = memo(() => {
 
       <div className="w-full h-full flex-center">
         <div className="container relative w-full h-full">
-        
           <div className="md:mt-40 mt-20" ref={nameRef}>
             <p className="font md:text-2xl text-base intro-text">
               Hey, I&apos;m
@@ -81,14 +80,13 @@ const Hero = memo(() => {
                 ANAND
               </h1>
             </div>
-            <div className="mt-8 ml-2 relative z-50">
+            <div className="relative z-50 mt-8 ml-2 max-[639px]:fixed max-[639px]:bottom-8 max-[639px]:left-4">
               <a
                 href="/vivek-anand-cv.pdf"
                 download
-                className="cv-button relative"
+                className="cv-button relative text-base px-6 py-2 max-[639px]:text-[10px] max-[639px]:px-2 max-[639px]:py-1"
                 style={{
                   zIndex: 9999,
-                  position: "relative",
                   pointerEvents: "auto",
                   cursor: "pointer",
                 }}
@@ -98,10 +96,8 @@ const Hero = memo(() => {
             </div>
           </div>
 
-        
           <div className="absolute w-full z-30 bottom-20 right-0">
             <div className="flex justify-between items-end">
-  
               <div className="flex flex-col items-center md:gap-5 gap-1">
                 <p className="md:text-base text-xs">Explore</p>
                 <img
