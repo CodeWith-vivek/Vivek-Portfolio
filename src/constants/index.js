@@ -157,6 +157,10 @@ const slides = [
     id: 1,
     title: "Sony Pictures",
     img: "/images/sony.webp",
+    description:
+      "A static Sony Pictures homepage built with HTML and CSS, featuring a clean design and modern UI that highlights entertainment and cinematic excellence.",
+    stacks: ["HTML", "CSS"],
+    github: "https://github.com/CodeWith-vivek/sony-pictures",
   },
   {
     id: 2,
@@ -170,7 +174,7 @@ const slides = [
   {
     id: 3,
     title: "Admin Dashboard",
-    github: "https://github.com/yourname/ecommerce-app",
+    github: "https://github.com/CodeWith-vivek/react-userMangement",
     description:
       "User management system with login/signup for users and admins  built with React and Redux.",
     stacks: ["React", "Redux", "Nodejs", "Express", "MongoDB"],
@@ -183,8 +187,7 @@ const slides = [
     description:
       "A static Jaguar homepage built with HTML and CSS, featuring a sleek layout, and modern UI showcasing luxury and performance.",
     stacks: ["HTML", "CSS"],
-    github: "https://github.com/yourname/ecommerce-app",
-    preview: "hhjvv",
+    github: "https://github.com/CodeWith-vivek/Jaguar",
   },
   {
     id: 5,
@@ -193,8 +196,8 @@ const slides = [
     description:
       "A simple OLX clone built with React and Firebase, allowing users to list and sell items with authentication, image uploads, and real-time data storage.",
     stacks: ["React", "Firebase"],
-    github: "https://github.com/yourname/ecommerce-app",
-    preview: "hhjvv",
+    github: "https://github.com/CodeWith-vivek/react-olx-clone",
+    preview: "https://react-olx-clone-three.vercel.app/",
   },
   {
     id: 6,
@@ -203,8 +206,8 @@ const slides = [
     stacks: ["React", "Firebase"],
     description:
       "A Netflix clone built with React and Firebase, featuring user signup/login, secure authentication, and movie playback with a modern UI.",
-    github: "https://github.com/yourname/ecommerce-app",
-    preview: "hhjvv",
+    github: "https://github.com/CodeWith-vivek/React-netflix-clone",
+    preview: "https://react-netflix-clone-chi-ten.vercel.app/login",
   },
 
   {
@@ -214,8 +217,7 @@ const slides = [
     description:
       "A static Sony Pictures homepage built with HTML and CSS, featuring a clean design and modern UI that highlights entertainment and cinematic excellence.",
     stacks: ["HTML", "CSS"],
-    github: "https://github.com/yourname/ecommerce-app",
-    preview: "hhjvv",
+    github: "https://github.com/CodeWith-vivek/sony-pictures",
   },
 ];
 
