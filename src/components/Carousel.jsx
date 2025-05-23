@@ -95,10 +95,10 @@ const Carousel = () => {
                 <div className="absolute w-full bottom-0 left-0 bg-black-300 bg-opacity-90 px-4 py-2 space-y-1 h-[150px]">
                   <div className="flex flex-col justify-center gap-1">
                     <div className="flex items-center gap-2">
-                      <p className="md:text-xl text-lg text-white-50 opacity-80 mt-2">
+                      <p className="text-sm md:text-xl text-white-50 opacity-80 mt-2">
                         {index + 1}.
                       </p>
-                      <p className="md:text-xl text-lg text-white-50 opacity-80 truncate mt-2">
+                      <p className="text-sm md:text-xl text-white-50 opacity-80 truncate mt-2">
                         {slide.title}
                       </p>
                     </div>
