@@ -176,7 +176,7 @@ const slides = [
     description:
       "A full-stack e-commerce . Features include user authentication, product catalog, shopping cart, and payment processing.",
     stacks: ["EJS", "Node.js", "Express", "MongoDB", "Razor Pay API"],
-    github: "https://github.com/yourname/ecommerce-app",
+    github: "https://github.com/CodeWith-vivek/crownify2024",
   },
   {
     id: 3,
