@@ -90,21 +90,21 @@ const SideBar = () => {
         </div>
         <div className="flex justify-center gap-6 mb-10 mt-20">
           <a
-            href="https://github.com/your-username"
+            href="https://github.com/CodeWith-vivek"
             target="_blank"
             rel="noopener noreferrer"
           >
             <FaGithub className="text-2xl hover:text-gray-500 transition-colors duration-300" />
           </a>
           <a
-            href="https://linkedin.com/in/your-username"
+            href="https://www.linkedin.com/in/vivek-anand-453bba17a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
             target="_blank"
             rel="noopener noreferrer"
           >
             <FaLinkedin className="text-2xl hover:text-blue-600 transition-colors duration-300" />
           </a>
           <a
-            href="https://instagram.com/your-username"
+            href="https://www.instagram.com/__v_i_v_e_k_._a_n_a_n_d?igsh=MWhkMmluaHM0dHduMQ=="
             target="_blank"
             rel="noopener noreferrer"
           >
