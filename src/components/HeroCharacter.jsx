@@ -6,6 +6,8 @@ import { asset } from "../utils/asset";
 // Light-theme frames already have their backdrop baked to transparent there;
 // nothing here touches pixels, so loading never blocks scrolling.
 const EYE_Y = 0.36; // eye line as a fraction of frame height, used as the tracking origin
+const HAIR_TOP = 0.09; // top of the hair as a fraction of frame height (measured 0.094-0.111)
+const MOBILE_GAP = 12; // px between the name and the top of the hair on phones
 const ASPECT = 870 / 720; // frame width / height (crop 0.16-0.84 of 1280x720)
 const REACH = 0.42; // cursor this far from the eyes (fraction of the shorter viewport side) = full turn
 const DEADZONE = 0.08; // normalised distance treated as "looking at me"
@@ -138,7 +140,9 @@ const HeroCharacter = () => {
     };
   }, []);
 
-  // Size the character so its eye line sits level with the "VIVEK ANAND" name.
+  // Desktop: eye line level with the "VIVEK ANAND" name, beside it.
+  // Phones: the name spans the width, so the head starts just below it and the
+  // character fills the rest of the screen, shoulders running off the edges.
   useEffect(() => {
     const canvas = canvasRef.current;
     const section = canvas?.closest("section");
@@ -146,15 +150,22 @@ const HeroCharacter = () => {
 
     const layout = () => {
       const names = section.querySelectorAll(".name-text");
-      if (window.innerWidth < DESKTOP_MIN || names.length === 0) {
+      if (names.length === 0) {
         canvas.style.height = "";
         return;
       }
       const first = names[0];
       const last = names[names.length - 1];
-      const nameMid =
-        (offsetWithin(first, section) + offsetWithin(last, section) + last.offsetHeight) / 2;
+      const nameTop = offsetWithin(first, section);
+      const nameBottom = offsetWithin(last, section) + last.offsetHeight;
       const sectionH = section.clientHeight;
+
+      if (window.innerWidth < DESKTOP_MIN) {
+        const height = (sectionH - nameBottom - MOBILE_GAP) / (1 - HAIR_TOP);
+        canvas.style.height = `${Math.max(height, sectionH * 0.4)}px`;
+        return;
+      }
+      const nameMid = (nameTop + nameBottom) / 2;
       const height = Math.min((sectionH - nameMid) / (1 - EYE_Y), sectionH * 1.1);
       canvas.style.height = `${Math.max(height, sectionH * 0.5)}px`;
     };
@@ -305,7 +316,7 @@ const HeroCharacter = () => {
       ref={canvasRef}
       aria-hidden="true"
       style={{ aspectRatio: ASPECT }}
-      className="hero-character absolute bottom-0 left-1/2 -translate-x-1/2 block h-[52dvh] max-w-[92vw] md:max-w-none"
+      className="hero-character absolute bottom-0 left-1/2 -translate-x-1/2 block max-w-none"
     />
   );
 };

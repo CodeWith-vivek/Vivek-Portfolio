@@ -36,7 +36,7 @@ const NavBar = () => {
         <img
           src="images/logo.webp"
           alt="logo"
-          className="md:size-12 size-10 object-cover object-center ml-8"
+          className="md:size-12 size-10 object-cover object-center ml-8 theme-logo"
         />
         <div className="md:flex items-center gap-7 hidden">
           {navItems.map((item, index) => (

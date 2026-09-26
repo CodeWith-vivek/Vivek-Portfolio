@@ -85,6 +85,11 @@
   filter: invert(1);
 }
 
+/* The logo artwork is light grey; render it solid black on the light page. */
+:root[data-theme="light"] .theme-logo {
+  filter: brightness(0);
+}
+
 html,
 body {
   width: 100dvw;

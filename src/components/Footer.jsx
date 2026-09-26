@@ -7,7 +7,7 @@ const Footer = () => {
         <img
           src="images/logo.webp"
           alt="logo"
-          className="w-7 h-7 object-cover object-center"
+          className="w-7 h-7 object-cover object-center theme-logo"
         />
       </div>
       <div className="flex items-center md:gap-16 gap-8">

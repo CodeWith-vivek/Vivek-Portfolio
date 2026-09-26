@@ -37,7 +37,7 @@ const Loader = memo(({ durationMs = 900 }) => {
         alt=""
         width="96"
         height="87"
-        className="loader-logo"
+        className="loader-logo theme-logo"
       />
       <div className="text-white-50 font-bold text-7xl leading-none gradient-title absolute bottom-10 right-10">
         {progress}%
