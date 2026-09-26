@@ -8,8 +8,10 @@ import { FaCaretLeft, FaCaretRight, FaGithub } from "react-icons/fa";
 
 const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [containerHeight, setContainerHeight] = useState("60vh"); 
-  const imageRefs = useRef([]); 
+  const [containerHeight, setContainerHeight] = useState("60vh");
+  const imageRefs = useRef([]);
+  const dragState = useRef({ startX: 0, dragging: false });
+  const lastWheelTime = useRef(0);
 
   const nextSlide = () => {
     setCurrentSlide((prevSlide) => (prevSlide + 1) % (slides.length - 1));
@@ -19,6 +21,33 @@ const Carousel = () => {
     setCurrentSlide(
       (prevSlide) => (prevSlide - 1 + (slides.length - 1)) % (slides.length - 1)
     );
+  };
+
+  const handlePointerDown = (e) => {
+    dragState.current = { startX: e.clientX, dragging: true };
+  };
+
+  const handlePointerUp = (e) => {
+    if (!dragState.current.dragging) return;
+    dragState.current.dragging = false;
+    const deltaX = e.clientX - dragState.current.startX;
+    const threshold = 50;
+    if (deltaX < -threshold) nextSlide();
+    else if (deltaX > threshold) prevSlide();
+  };
+
+  const handlePointerLeave = () => {
+    dragState.current.dragging = false;
+  };
+
+  const handleWheel = (e) => {
+    if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+    e.preventDefault();
+    const now = Date.now();
+    if (now - lastWheelTime.current < 700) return;
+    lastWheelTime.current = now;
+    if (e.deltaX > 20) nextSlide();
+    else if (e.deltaX < -20) prevSlide();
   };
 
   
@@ -59,9 +88,16 @@ const Carousel = () => {
 
   return (
     <div className="relative">
-      <div className="w-full relative" style={{ height: containerHeight }}>
-        <div className="carousel-gradient-left-box md:w-52 w-16 h-full absolute bottom-0 left-0 z-20"></div>
-        <div className="carousel-gradient-right-box md:w-52 w-16 h-full absolute bottom-0 right-0 z-20"></div>
+      <div
+        className="w-full relative cursor-grab active:cursor-grabbing select-none"
+        style={{ height: containerHeight, touchAction: "pan-y" }}
+        onPointerDown={handlePointerDown}
+        onPointerUp={handlePointerUp}
+        onPointerLeave={handlePointerLeave}
+        onWheel={handleWheel}
+      >
+        <div className="carousel-gradient-left-box md:w-52 w-16 h-full absolute bottom-0 left-0 z-20 pointer-events-none"></div>
+        <div className="carousel-gradient-right-box md:w-52 w-16 h-full absolute bottom-0 right-0 z-20 pointer-events-none"></div>
 
         <div className="absolute w-full -left-[43vw] top-0">
           <div
@@ -70,7 +106,7 @@ const Carousel = () => {
           >
             {slides.map((slide, index) => (
               <div
-                className="slider-item w-[60vw] h-full flex-none relative overflow-hidden bg-black"
+                className="slider-item w-[60vw] h-full flex-none relative overflow-hidden bg-black-300"
                 key={index}
               >
                 <img
@@ -78,6 +114,9 @@ const Carousel = () => {
                   alt={slide.title}
                   className="w-full h-[calc(100%-150px)] object-contain object-center absolute top-0 left-0"
                   ref={(el) => (imageRefs.current[index] = el)}
+                  loading="lazy"
+                  decoding="async"
+                  draggable={false}
                   onLoad={() => {
                     if (index === currentSlide) {
                       const img = imageRefs.current[index];
@@ -92,7 +131,7 @@ const Carousel = () => {
                   }}
                 />
 
-                <div className="absolute w-full bottom-0 left-0 bg-black-300 bg-opacity-90 px-4 py-2 space-y-1 h-[150px]">
+                <div className="absolute w-full bottom-0 left-0 bg-black-300/90 border-t border-line px-4 py-2 space-y-1 h-[150px]">
                   <div className="flex flex-col justify-center gap-1">
                     <div className="flex items-center gap-2">
                       <p className="text-sm md:text-xl text-white-50 opacity-80 mt-2">
@@ -117,6 +156,7 @@ const Carousel = () => {
                       {slide.github && (
                         <a
                           href={slide.github}
+                          aria-label={`${slide.title} on GitHub`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-white-50 opacity-80 hover:opacity-70 mt-2"
@@ -137,7 +177,7 @@ const Carousel = () => {
                         {slide.stacks.map((stack, i) => (
                           <span
                             key={i}
-                            className="text-[7px] md:text-[9px] px-1 py-0.5 rounded-full bg-gray-100 text-black-100 font-medium"
+                            className="text-[7px] md:text-[9px] px-1 py-0.5 rounded-full bg-olive-800 border border-lime/30 text-blue-50 font-mono font-medium"
                           >
                             {stack}
                           </span>
@@ -155,13 +195,13 @@ const Carousel = () => {
       <div className="mt-10 text-white-50 flex justify-end gap-5 md:-translate-x-32 -translate-x-5">
         <div
           onClick={prevSlide}
-          className="rounded-full cursor-pointer bg-black hover:bg-red active:scale-90 transition-all w-12 h-12 flex-center"
+          className="rounded-full cursor-pointer bg-black-300 border border-line hover:border-lime active:scale-90 transition-all w-12 h-12 flex-center"
         >
           <FaCaretLeft className="w-5 h-5 text-white-50" />
         </div>
         <div
           onClick={nextSlide}
-          className="rounded-full cursor-pointer bg-black hover:bg-red active:scale-90 transition-all w-12 h-12 flex-center"
+          className="rounded-full cursor-pointer bg-black-300 border border-line hover:border-lime active:scale-90 transition-all w-12 h-12 flex-center"
         >
           <FaCaretRight className="w-5 h-5 text-white-50" />
         </div>

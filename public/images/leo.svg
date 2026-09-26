@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M80 0H0V80" fill="none" stroke="#c6f24e" stroke-opacity="0.05"/>
+    </pattern>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#c6f24e" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#c6f24e" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="#060605"/>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+  <circle cx="800" cy="360" r="300" fill="url(#glow)"/>
+  <g fill="none" stroke="#c6f24e" stroke-opacity="0.25">
+    <circle cx="800" cy="360" r="90"/>
+    <circle cx="800" cy="360" r="150"/>
+    <circle cx="800" cy="360" r="210" stroke-opacity="0.12"/>
+  </g>
+  <circle cx="800" cy="360" r="12" fill="#c6f24e"/>
+  <g fill="#c6f24e">
+    <rect x="740" y="340" width="6" height="40" rx="3" opacity="0.6"/>
+    <rect x="760" y="325" width="6" height="70" rx="3" opacity="0.8"/>
+    <rect x="834" y="325" width="6" height="70" rx="3" opacity="0.8"/>
+    <rect x="854" y="340" width="6" height="40" rx="3" opacity="0.6"/>
+  </g>
+  <text x="800" y="640" text-anchor="middle" font-family="DM Sans, Arial, sans-serif" font-weight="700" font-size="120" letter-spacing="-2" fill="#f0f0e4">LEO</text>
+  <text x="800" y="710" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="28" letter-spacing="6" fill="#8a8d7c">LOCAL-FIRST AI ASSISTANT</text>
+</svg>

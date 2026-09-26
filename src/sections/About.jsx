@@ -15,6 +15,17 @@ import { useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const Card = ({ title, text }) => (
+  <div id="card" className="glow-card bg-black-300 rounded-2xl p-7 w-full h-full">
+    <div className="flex flex-col h-full justify-center gap-2">
+      <h1 className="gradient-title md:text-3xl text-2xl font-medium animated-text">
+        {title}
+      </h1>
+      <p className="md:text-2xl max-w-96 animated-text">{text}</p>
+    </div>
+  </div>
+);
+
 const About = () => {
   const grid2Container = useRef();
   useGSAP(() => {
@@ -43,17 +54,6 @@ const About = () => {
     });
   }, []);
 
-  const Card = ({ title, text }) => (
-    <div id="card" className="bg-black-300 rounded-2xl p-7 w-full h-full">
-      <div className="flex flex-col h-full justify-center gap-2">
-        <h1 className="gradient-title md:text-3xl text-2xl font-medium animated-text">
-          {title}
-        </h1>
-        <p className="md:text-2xl max-w-96 animated-text">{text}</p>
-      </div>
-    </div>
-  );
-
   return (
     <section id="about" className="flex-center relative md:p-0 px-5">
       <GradientSpheres
@@ -65,16 +65,16 @@ const About = () => {
         <TitleHeader
           title="About Me"
           number="01"
-          text="Passionate Creator, Lifelong Learner"
+          text="Full Stack Developer building AI-powered products"
         />
 
         <div className="md:mt-20 mt-10">
           <div className="grid grid-cols-12 md:grid-rows-12 gap-5">
        
             <div className="md:col-span-7 col-span-12 row-span-5">
-              <div className="bg-black-300 rounded-2xl p-7 w-full h-full">
+              <div className="glow-card bg-black-300 rounded-2xl p-7 w-full h-full">
                 <img
-                  src="/images/flower.svg"
+                  src="images/flower.svg"
                   alt="flower"
                   className="md:w-20 w-10"
                 />
@@ -82,23 +82,26 @@ const About = () => {
                   <Tilt>
                     <div className="relative group w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden mx-auto transition-all duration-500">
                       <img
-                        src="/images/profile.webp"
+                        src="images/profile.webp"
                         alt="Vivek Anand"
-                        className="w-full h-full object-cover rounded-full border-4 border-transparent group-hover:border-blue-500 group-hover:shadow-[0_0_20px_5px_rgba(59,130,246,0.8)] transition-all duration-300"
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover rounded-full border-4 border-transparent group-hover:border-lime group-hover:shadow-[0_0_24px_4px] group-hover:shadow-lime/40 transition-all duration-300"
                       />
                     </div>
                   </Tilt>
-                  <h1 className="text-blue-50 md:text-5xl text-3xl mt-5">
+                  <h1 className="text-white-50 md:text-5xl text-3xl mt-5">
                     Vivek Anand
                   </h1>
                   <p className="md:text-2xl mt-2">
-                    I’m a MERN stack developer, with a passion for building
-                    full-stack web applications. Coming from a non-IT
-                    background, I’ve transitioned into tech and successfully
-                    delivered both major and mini projects across various
-                    domains. My journey reflects adaptability, a strong learning
-                    mindset, and a commitment to solving real-world problems
-                    through code.
+                    I build and deploy production web applications and
+                    AI-powered systems with TypeScript, React, Next.js,
+                    Node.js, PostgreSQL, and MongoDB. My work spans REST APIs,
+                    authentication, RAG pipelines, hybrid and vector search,
+                    LLM integration, and tool calling, from backend and
+                    frontend through deployment and client handover. Coming
+                    from a commerce background, I bring a practical,
+                    business-first view to the products I ship.
                   </p>
                 </div>
               </div>
@@ -106,18 +109,18 @@ const About = () => {
 
            
             <div className="md:col-span-5 col-span-12 row-span-5 ">
-              <div className="bg-gradient-to-r from-[#3F5EFB] to-[#FC4646] rounded-2xl w-full h-full min-h-[400px] overflow-hidden relative">
+              <div className="bg-gradient-to-br from-olive-800 to-black-100 border border-line grid-bg rounded-2xl w-full h-full min-h-[400px] overflow-hidden relative">
                 <div
                   ref={grid2Container}
                   className="flex items-center justify-center w-full h-[400px] md:h-[500px] relative"
                 >
-                  <p className=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-5xl text-white font-semibold z-0">
+                  <p className=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-5xl text-white-50/15 font-bold z-0">
                     CODE IS CRAFT
                   </p>
 
                   <Cardy
                     style={{ rotate: "75deg", top: "30%", left: "20%" }}
-                    text="MONGODB"
+                    text="RAG"
                     containerRef={grid2Container}
                   />
                   <Cardy
@@ -127,22 +130,22 @@ const About = () => {
                   />
                   <Cardy
                     style={{ rotate: "90deg", bottom: "30%", left: "70%" }}
-                    text="Design Patterns"
+                    text="LLM Agents"
                     containerRef={grid2Container}
                   />
                   <Cardy
                     style={{ rotate: "-45deg", top: "55%", left: "0%" }}
-                    text="Design Principles"
+                    text="PostgreSQL"
                     containerRef={grid2Container}
                   />
                   <Cardy
                     style={{ rotate: "20deg", top: "10%", left: "38%" }}
-                    text="REACT"
+                    text="NEXT.JS"
                     containerRef={grid2Container}
                   />
                   <Cardy
                     style={{ rotate: "30deg", top: "70%", left: "70%" }}
-                    image="/images/html.png"
+                    image="images/html.png"
                     containerRef={grid2Container}
                   />
                   <Cardy
@@ -163,13 +166,13 @@ const About = () => {
             <div className="md:col-span-6 col-span-12 row-span-3">
               <Card
                 title="Development Approach"
-                text="Focused on clean code, performance, security, and user-first design for scalable, reliable apps."
+                text="Clean, typed code, secure APIs, and guarded AI features, built to be reliable in production."
               />
             </div>
 
         
             <div className="md:col-span-4 col-span-12 row-span-4">
-              <div className="bg-black-300 rounded-2xl p-7 w-full h-full flex flex-col justify-between">
+              <div className="glow-card bg-black-300 rounded-2xl p-7 w-full h-full flex flex-col justify-between">
                 {["BE YOURSELF!", "BE DIFFERENT!", "BUILD DIFFERENT!"].map(
                   (line, idx) => (
                     <h1
@@ -192,18 +195,20 @@ const About = () => {
                   rel="noopener noreferrer"
                   className="block w-full h-full"
                 >
-                  <div className="bg-black-300 rounded-2xl p-7 w-full h-full group cursor-pointer">
+                  <div className="glow-card bg-black-300 rounded-2xl p-7 w-full h-full group cursor-pointer">
                     <div className="flex justify-between items-center h-full">
                       <div className="flex items-center md:gap-5">
-                        <img src={item.icon} alt={item.name} />
+                        <img src={item.icon} alt="" loading="lazy" decoding="async" />
                         <h1 className="gradient-title md:text-3xl text-xl ms-5 font-medium">
                           {item.name}
                         </h1>
                       </div>
                       <div className="group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform">
                         <img
-                          src="/images/arrowupright.svg"
+                          src="images/arrowupright.svg"
                           alt="arrow-up"
+                          loading="lazy"
+                          decoding="async"
                           className="md:scale-100 scale-50"
                         />
                       </div>

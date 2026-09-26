@@ -84,7 +84,7 @@ const ContactForm = () => {
         method="GET"
         target="hidden_iframe"
         onSubmit={handleSubmit(onSubmit)}
-        className="w-full text-[#a7a7a7] flex flex-col gap-7"
+        className="w-full text-muted flex flex-col gap-7"
       >
         <div>
           <label
@@ -98,7 +98,7 @@ const ContactForm = () => {
             type="text"
             id="name"
             placeholder="Your name"
-            className="w-full px-4 py-4 font-light md:text-base text-sm placeholder:text-[#fafafa50] bg-black-300 rounded-md"
+            className="w-full px-4 py-4 font-light md:text-base text-sm placeholder:text-white-50/40 bg-black-300 border border-line focus:border-lime focus:outline-none rounded-md"
             disabled={isSubmitting}
           />
           {errors.name && (
@@ -118,7 +118,7 @@ const ContactForm = () => {
             type="email"
             id="email"
             placeholder="Your email"
-            className="w-full px-4 py-4 font-light md:text-base text-sm placeholder:text-[#fafafa50] bg-black-300 rounded-md"
+            className="w-full px-4 py-4 font-light md:text-base text-sm placeholder:text-white-50/40 bg-black-300 border border-line focus:border-lime focus:outline-none rounded-md"
             disabled={isSubmitting}
           />
           {errors.email && (
@@ -138,7 +138,7 @@ const ContactForm = () => {
             type="text"
             id="subject"
             placeholder="Subject"
-            className="w-full px-4 py-4 font-light md:text-base text-sm placeholder:text-[#fafafa50] bg-black-300 rounded-md"
+            className="w-full px-4 py-4 font-light md:text-base text-sm placeholder:text-white-50/40 bg-black-300 border border-line focus:border-lime focus:outline-none rounded-md"
             disabled={isSubmitting}
           />
           {errors.subject && (
@@ -160,7 +160,7 @@ const ContactForm = () => {
             id="message"
             placeholder="Your message"
             rows={5}
-            className="w-full px-4 py-4 font-light md:text-base text-sm placeholder:text-[#fafafa50] bg-black-300 rounded-md resize-none"
+            className="w-full px-4 py-4 font-light md:text-base text-sm placeholder:text-white-50/40 bg-black-300 border border-line focus:border-lime focus:outline-none rounded-md resize-none"
             disabled={isSubmitting}
           ></textarea>
           {errors.message && (
@@ -173,7 +173,7 @@ const ContactForm = () => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className={`w-full py-4 bg-blue-50 text-white-50 font-semibold rounded-md hover:bg-blue-600 transition duration-300 ${
+          className={`w-full py-4 bg-accent-fill text-on-accent font-mono tracking-wider font-semibold rounded-md hover:brightness-110 transition duration-300 ${
             isSubmitting ? "opacity-70 cursor-not-allowed" : "cursor-pointer"
           }`}
         >

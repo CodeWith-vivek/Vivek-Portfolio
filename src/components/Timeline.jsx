@@ -44,20 +44,20 @@ export const Timeline = ({ data }) => {
               <div className="sticky z-40 flex flex-col items-center self-start top-40 md:w-1/3">
                 {/* Dot removed */}
 
-                <div className="hidden md:flex flex-col gap-2 text-xl font-bold text-neutral-300 pl-10">
-                  <h3>{item.date}</h3>
-                  <h3 className="text-3xl text-neutral-400">{item.title}</h3>
-                  <h3 className="text-3xl text-neutral-500">{item.job}</h3>
+                <div className="hidden md:flex flex-col gap-2 text-xl font-bold text-white-50 pl-10">
+                  <h3 className="font-mono text-base tracking-widest text-blue-50">{item.date}</h3>
+                  <h3 className="text-3xl text-white-50">{item.title}</h3>
+                  <h3 className="text-3xl text-muted">{item.job}</h3>
                 </div>
               </div>
 
               <div className="relative w-full pl-20 pr-4 md:pl-4 md:w-2/3">
-                <div className="block mb-4 text-2xl font-bold text-left text-neutral-300 md:hidden">
+                <div className="block mb-4 text-2xl font-bold text-left text-white-50 md:hidden">
                   <h3>{item.date}</h3>
                   <h3>{item.job}</h3>
                 </div>
                 {item.contents.map((content, i) => (
-                  <p className="mb-3 font-normal text-neutral-400" key={i}>
+                  <p className="mb-3 font-normal text-muted" key={i}>
                     {content}
                   </p>
                 ))}
@@ -68,7 +68,7 @@ export const Timeline = ({ data }) => {
 
         <div
           style={{ height: `${height}px` }}
-          className="absolute left-[16px] top-0 w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent via-neutral-700 to-transparent [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] overflow-hidden"
+          className="absolute left-[16px] top-0 w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent via-line to-transparent [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] overflow-hidden"
         >
           <motion.div
             style={{
@@ -77,10 +77,10 @@ export const Timeline = ({ data }) => {
             }}
             className="absolute top-0 left-1/2 -translate-x-1/2"
           >
-            <div className="w-2 h-8 bg-gradient-to-b from-white via-cyan-400 to-blue-500 rounded-full blur-sm opacity-90" />
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-12 bg-gradient-to-b from-cyan-300 via-blue-400 to-purple-500 rounded-full blur-md opacity-60" />
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-6 h-16 bg-gradient-to-b from-cyan-200 via-blue-300 to-purple-400 rounded-full blur-lg opacity-40" />
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-20 bg-gradient-to-b from-cyan-100 via-blue-200 to-purple-300 rounded-full blur-xl opacity-20" />
+            <div className="w-2 h-8 bg-gradient-to-b from-white via-lime to-lime-dim rounded-full blur-sm opacity-90" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-12 bg-gradient-to-b from-lime via-lime-dim to-olive-800 rounded-full blur-md opacity-60" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-6 h-16 bg-gradient-to-b from-lime via-lime-dim to-olive-800 rounded-full blur-lg opacity-40" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-20 bg-gradient-to-b from-lime via-lime-dim to-olive-800 rounded-full blur-xl opacity-20" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1 h-4 bg-white rounded-full opacity-100" />
           </motion.div>
 
@@ -93,7 +93,7 @@ export const Timeline = ({ data }) => {
                 [0, 0.8, 0.8, 0]
               ),
             }}
-            className="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-24 bg-gradient-to-b from-transparent via-cyan-400/50 to-transparent rounded-full blur-sm"
+            className="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-24 bg-gradient-to-b from-transparent via-lime/50 to-transparent rounded-full blur-sm"
           />
         </div>
       </div>

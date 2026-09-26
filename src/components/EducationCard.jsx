@@ -1,12 +1,12 @@
 const EducationCard = ({ education }) => {
   return (
-    <div className="col-span-1 group p-8 mr-6 rounded-xl transition-all duration-700 bg-black-300 hover:bg-blue-300">
+    <div className="col-span-1 group p-8 mr-6 rounded-xl border border-line transition-colors duration-700 bg-black-300 hover:bg-olive-800 hover:border-lime/60">
       <div className="rounded-xl transition-all duration-700">
         <div className="flex justify-between items-center">
-          <h1 className="text-blue-50 text-xl font-semibold group-hover:text-white transition-all duration-700">
+          <h1 className="text-white-50 text-xl font-semibold transition-all duration-700">
             {education.institution}
           </h1>
-          <p className="text-sm text-white-50 font-light group-hover:text-white">
+          <p className="text-sm font-mono text-muted font-light group-hover:text-white-50">
             {education.years}
           </p>
         </div>

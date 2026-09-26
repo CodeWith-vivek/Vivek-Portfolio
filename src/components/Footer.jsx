@@ -5,7 +5,7 @@ const Footer = () => {
     <div className="w-full flex-center flex-col md:gap-10 gap-7 bg-black-300 py-10">
       <div>
         <img
-          src="/images/logo.webp"
+          src="images/logo.webp"
           alt="logo"
           className="w-7 h-7 object-cover object-center"
         />
@@ -29,7 +29,7 @@ const Footer = () => {
         ))}
       </div>
       <p className="font-regular md:text-lg text-sm">
-        © 2025 Vivek Anand. All rights reserved.
+        © 2026 Vivek Anand. All rights reserved.
       </p>
     </div>
   );

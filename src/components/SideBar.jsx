@@ -3,6 +3,7 @@ import { navItems } from "../constants";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
+import ThemeToggle from "./ThemeToggle";
 
 const SideBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -64,11 +65,11 @@ const SideBar = () => {
   return (
     <div className="md:hidden block">
       <div className="fixed z-[100] top-7 right-5" onClick={toggleSideBar}>
-        <img src="images/menu-icon.png" alt="menu" />
+        <img src="images/menu-icon.png" alt="menu" className="theme-invert" />
       </div>
       <div className="fixed z-[100] -translate-x-[100%] w-screen h-dvh side-bar-bg">
         <div className="flex justify-end m-5" onClick={toggleSideBar}>
-          <img src="images/x.png" alt="close" />
+          <img src="images/x.png" alt="close" className="theme-invert" />
         </div>
         <div className="mt-5 px-10">
           <div className="flex flex-col items-center gap-7">
@@ -88,27 +89,33 @@ const SideBar = () => {
             ))}
           </div>
         </div>
-        <div className="flex justify-center gap-6 mb-10 mt-20">
+        <div className="side-bar-item opacity-0 flex justify-center mt-20">
+          <ThemeToggle />
+        </div>
+        <div className="flex justify-center gap-6 mb-10 mt-6">
           <a
             href="https://github.com/CodeWith-vivek"
             target="_blank"
+            aria-label="GitHub"
             rel="noopener noreferrer"
           >
-            <FaGithub className="text-2xl hover:text-gray-500 transition-colors duration-300" />
+            <FaGithub className="text-2xl hover:text-white-50 transition-colors duration-300" />
           </a>
           <a
             href="https://www.linkedin.com/in/vivek-anand-453bba17a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
             target="_blank"
+            aria-label="LinkedIn"
             rel="noopener noreferrer"
           >
-            <FaLinkedin className="text-2xl hover:text-blue-600 transition-colors duration-300" />
+            <FaLinkedin className="text-2xl hover:text-white-50 transition-colors duration-300" />
           </a>
           <a
             href="https://www.instagram.com/__v_i_v_e_k_._a_n_a_n_d?igsh=MWhkMmluaHM0dHduMQ=="
             target="_blank"
+            aria-label="Instagram"
             rel="noopener noreferrer"
           >
-            <FaInstagram className="text-2xl hover:text-pink-500 transition-colors duration-300" />
+            <FaInstagram className="text-2xl hover:text-white-50 transition-colors duration-300" />
           </a>
         </div>
       </div>

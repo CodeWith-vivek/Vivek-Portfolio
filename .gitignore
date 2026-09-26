@@ -12,6 +12,18 @@ dist
 dist-ssr
 *.local
 
+# Claude Code local state (lock files, session data)
+.claude/
+
+# Local-only backups and caches, not needed to build or run the site
+image-originals/
+__pycache__/
+*.pyc
+
+# scripts/extract_hero_frames.py's staging folder while it rebuilds
+# public/frames/; never a final artifact, so never committed
+public/frames.new/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
