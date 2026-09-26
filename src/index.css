@@ -473,25 +473,55 @@ h3 {
  
 }
 
-.cv-button {
+/* Shared button motion: every button/CTA on the site gets this same lift on
+   hover and press-down on click, cursor:pointer included, whatever its own
+   colours are. */
+.btn-hover {
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease,
+    background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+.btn-hover:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+.btn-hover:active {
+  transform: translateY(0) scale(0.96);
+  transition-duration: 0.1s;
+}
+
+.btn-primary,
+.btn-outline {
   position: relative;
-  display: inline-block;
-  padding: 0.5rem 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.5rem;
   font-family: var(--font-mono);
   font-weight: 600;
   letter-spacing: 0.04em;
   border-radius: 8px;
-  border: 1px solid var(--color-accent-fill);
-  color: var(--color-on-accent);
-  background: var(--color-accent-fill);
-  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-  cursor: pointer;
+  border: 1px solid transparent;
 }
 
-.cv-button:hover {
+.btn-primary {
+  border-color: var(--color-accent-fill);
+  color: var(--color-on-accent);
+  background: var(--color-accent-fill);
+}
+.btn-primary:hover {
   background: #d4f76f;
   box-shadow: 0 0 28px -4px rgba(198, 242, 78, 0.45);
-  transform: translateY(-2px);
+}
+
+.btn-outline {
+  border-color: var(--color-line);
+  color: var(--color-white-50);
+  background: transparent;
+}
+.btn-outline:hover {
+  border-color: var(--color-lime);
+  color: var(--color-lime);
+  box-shadow: 0 0 20px -8px rgba(198, 242, 78, 0.3);
 }
 
 /* Fade the hero character's frame edges into the page background. */

@@ -195,13 +195,13 @@ const Carousel = () => {
       <div className="mt-10 text-white-50 flex justify-end gap-5 md:-translate-x-32 -translate-x-5">
         <div
           onClick={prevSlide}
-          className="rounded-full cursor-pointer bg-black-300 border border-line hover:border-lime active:scale-90 transition-all w-12 h-12 flex-center"
+          className="btn-hover rounded-full bg-black-300 border border-line hover:border-lime active:scale-90 transition-all w-12 h-12 flex-center"
         >
           <FaCaretLeft className="w-5 h-5 text-white-50" />
         </div>
         <div
           onClick={nextSlide}
-          className="rounded-full cursor-pointer bg-black-300 border border-line hover:border-lime active:scale-90 transition-all w-12 h-12 flex-center"
+          className="btn-hover rounded-full bg-black-300 border border-line hover:border-lime active:scale-90 transition-all w-12 h-12 flex-center"
         >
           <FaCaretRight className="w-5 h-5 text-white-50" />
         </div>

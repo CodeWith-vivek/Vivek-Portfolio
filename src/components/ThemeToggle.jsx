@@ -31,7 +31,7 @@ const ThemeToggle = ({ className = "" }) => {
       onClick={toggleTheme}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       title={isDark ? "Light mode" : "Dark mode"}
-      className={`flex-center size-10 rounded-full border border-line bg-black-300 text-white-50 hover:border-lime hover:text-blue-50 transition-colors duration-300 cursor-pointer ${className}`}
+      className={`btn-hover flex-center size-10 rounded-full border border-line bg-black-300 text-white-50 hover:border-lime hover:text-blue-50 transition-colors duration-300 ${className}`}
     >
       {isDark ? <FiSun className="size-5" /> : <FiMoon className="size-5" />}
     </button>

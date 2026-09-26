@@ -15,7 +15,10 @@ const Loader = memo(({ durationMs = 900 }) => {
     const start = performance.now();
 
     const tick = (now) => {
-      const t = Math.min((now - start) / durationMs, 1);
+      // Clamp to 0: rAF's timestamp can land fractionally before the
+      // performance.now() captured above, which sent t negative and made
+      // the eased value (and displayed %) negative too.
+      const t = Math.max(0, Math.min((now - start) / durationMs, 1));
       const eased = 1 - (1 - t) ** 3; // ease-out: quick start, settles near 100
       setProgress(Math.round(eased * 100));
       if (t < 1) rafId = requestAnimationFrame(tick);

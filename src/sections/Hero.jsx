@@ -3,6 +3,7 @@
 import { memo, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { FiArrowRight, FiDownload } from "react-icons/fi";
 import GradientSpheres from "../components/GradientSpheres";
 import HeroCharacter from "../components/HeroCharacter";
 
@@ -79,18 +80,26 @@ const Hero = memo(() => {
                 ANAND
               </h1>
             </div>
-            <div className="relative z-50 mt-8 ml-2 max-[639px]:fixed max-[639px]:bottom-8 max-[639px]:left-4">
+            <div
+              className="relative z-50 mt-8 ml-2 flex items-center gap-3 max-[639px]:fixed max-[639px]:bottom-8 max-[639px]:left-4 max-[639px]:right-4 max-[639px]:justify-between"
+              style={{ pointerEvents: "auto" }}
+            >
               <a
-                href="vivek-anand-cv.pdf"
-                download
-                className="cv-button relative text-base px-6 py-2 max-[639px]:text-[10px] max-[639px]:px-2 max-[639px]:py-1"
-                style={{
-                  zIndex: 9999,
-                  pointerEvents: "auto",
-                  cursor: "pointer",
-                }}
+                href="vivek-anand-resume.pdf"
+                download="Vivek-Anand-Resume.pdf"
+                className="btn-hover btn-primary relative text-base max-[639px]:text-[11px] max-[639px]:px-3 max-[639px]:py-1.5"
+                style={{ zIndex: 9999 }}
               >
-                Download CV
+                <FiDownload className="size-4 max-[639px]:size-3" />
+                Download Resume
+              </a>
+              <a
+                href="#projects"
+                className="btn-hover btn-outline relative text-base max-[639px]:text-[11px] max-[639px]:px-3 max-[639px]:py-1.5"
+                style={{ zIndex: 9999 }}
+              >
+                View Work
+                <FiArrowRight className="size-4 max-[639px]:size-3" />
               </a>
             </div>
           </div>

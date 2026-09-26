@@ -173,7 +173,7 @@ const ContactForm = () => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className={`w-full py-4 bg-accent-fill text-on-accent font-mono tracking-wider font-semibold rounded-md hover:brightness-110 transition duration-300 ${
+          className={`btn-hover w-full py-4 bg-accent-fill text-on-accent font-mono tracking-wider font-semibold rounded-md hover:brightness-110 transition duration-300 ${
             isSubmitting ? "opacity-70 cursor-not-allowed" : "cursor-pointer"
           }`}
         >
