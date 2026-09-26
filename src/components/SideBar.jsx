@@ -3,7 +3,6 @@ import { navItems } from "../constants";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
-import ThemeToggle from "./ThemeToggle";
 
 const SideBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -64,11 +63,17 @@ const SideBar = () => {
 
   return (
     <div className="md:hidden block">
-      <div className="fixed z-[100] top-7 right-5" onClick={toggleSideBar}>
+      <div
+        className="btn-hover fixed z-[100] top-7 right-5"
+        onClick={toggleSideBar}
+      >
         <img src="images/menu-icon.png" alt="menu" className="theme-invert" />
       </div>
       <div className="fixed z-[100] -translate-x-[100%] w-screen h-dvh side-bar-bg">
-        <div className="flex justify-end m-5" onClick={toggleSideBar}>
+        <div
+          className="btn-hover flex justify-end m-5"
+          onClick={toggleSideBar}
+        >
           <img src="images/x.png" alt="close" className="theme-invert" />
         </div>
         <div className="mt-5 px-10">
@@ -89,10 +94,7 @@ const SideBar = () => {
             ))}
           </div>
         </div>
-        <div className="side-bar-item opacity-0 flex justify-center mt-20">
-          <ThemeToggle />
-        </div>
-        <div className="flex justify-center gap-6 mb-10 mt-6">
+        <div className="flex justify-center gap-6 mb-10 mt-20">
           <a
             href="https://github.com/CodeWith-vivek"
             target="_blank"

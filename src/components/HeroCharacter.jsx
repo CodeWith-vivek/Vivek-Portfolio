@@ -16,9 +16,11 @@ const MAG_WEIGHT = 0.02; // tie-break only: direction decides the frame, turn st
 const SWITCH_MARGIN = 0.004; // hysteresis so near-equal frames don't flicker
 const DESKTOP_MIN = 768;
 
-// Head tracking follows a mouse pointer. Touch devices have none, so they only
-// ever show the centre frame and skip downloading the other ~110.
-const canTrack = () => window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+// With a mouse the head follows the cursor from the start. On touch screens it
+// follows the finger instead, and the other ~110 frames only download once the
+// visitor first touches the screen, so phones that never interact stay light.
+const hasMouse = () => window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+const TOUCH_HOLD_MS = 2500; // keep looking at the last touch this long, then back to eye contact
 
 const getTheme = () =>
   document.documentElement.dataset.theme === "light" ? "light" : "dark";
@@ -55,42 +57,56 @@ const HeroCharacter = () => {
   const themeRef = useRef(getTheme());
   const pointerRef = useRef(null);
   const dirtyRef = useRef(true);
+  const loadRestRef = useRef(() => {}); // loads every frame for the active theme
   const [ready, setReady] = useState(false);
 
   // Load the centre frame first so the hero shows immediately, then the rest.
   useEffect(() => {
     let cancelled = false;
 
+    let tracking = hasMouse(); // becomes true on first touch for touch screens
+    const restLoading = {};
+    const url = (theme, m) => asset(`frames/${theme}/${m.file}`);
+
+    // Centre frame first so the hero shows immediately.
     const loadTheme = (theme) => {
       if (loadingRef.current[theme]) return loadingRef.current[theme];
       const manifest = manifestRef.current;
       const set = new Array(manifest.length).fill(null);
       setsRef.current[theme] = set;
-      const url = (m) => asset(`frames/${theme}/${m.file}`);
       const centre = manifest.findIndex((m) => m.gx === 0 && m.gy === 0);
 
-      const promise = loadImage(url(manifest[centre])).then(async (img) => {
+      const promise = loadImage(url(theme, manifest[centre])).then((img) => {
         if (cancelled) return;
         set[centre] = img;
         if (theme === themeRef.current) {
           dirtyRef.current = true;
           setReady(true);
         }
-        if (!canTrack()) return;
-        await Promise.all(
-          manifest.map((m, i) =>
-            i === centre
-              ? null
-              : loadImage(url(m))
-                  .then((frame) => {
-                    set[i] = frame;
-                  })
-                  .catch(() => {})
-          )
-        );
+        if (tracking) loadRest(theme);
       });
       loadingRef.current[theme] = promise;
       return promise;
+    };
+
+    // Every other frame, needed only once the head can actually turn.
+    const loadRest = (theme) => {
+      const set = setsRef.current[theme];
+      if (restLoading[theme] || !set) return;
+      restLoading[theme] = true;
+      manifestRef.current.forEach((m, i) => {
+        if (set[i]) return;
+        loadImage(url(theme, m))
+          .then((frame) => {
+            if (!cancelled) set[i] = frame;
+          })
+          .catch(() => {});
+      });
+    };
+
+    loadRestRef.current = () => {
+      tracking = true;
+      if (manifestRef.current.length) loadRest(themeRef.current);
     };
 
     (async () => {
@@ -126,17 +142,41 @@ const HeroCharacter = () => {
   }, []);
 
   useEffect(() => {
+    let releaseTimer;
     const onMove = (e) => {
+      if (e.pointerType !== "mouse") return; // touches are handled below
       pointerRef.current = { x: e.clientX, y: e.clientY };
     };
-    const onLeave = () => {
-      pointerRef.current = null;
+    const onLeave = (e) => {
+      if (e.pointerType === "mouse") pointerRef.current = null;
+    };
+    // Touch: look where the finger is (tap or drag, including while scrolling),
+    // hold that gaze briefly after lifting, then return to eye contact.
+    const onTouch = (e) => {
+      const t = e.touches[0];
+      if (!t) return;
+      clearTimeout(releaseTimer);
+      pointerRef.current = { x: t.clientX, y: t.clientY };
+      loadRestRef.current();
+    };
+    const onTouchEnd = () => {
+      clearTimeout(releaseTimer);
+      releaseTimer = setTimeout(() => {
+        pointerRef.current = null;
+      }, TOUCH_HOLD_MS);
     };
     window.addEventListener("pointermove", onMove, { passive: true });
     document.documentElement.addEventListener("pointerleave", onLeave);
+    window.addEventListener("touchstart", onTouch, { passive: true });
+    window.addEventListener("touchmove", onTouch, { passive: true });
+    window.addEventListener("touchend", onTouchEnd, { passive: true });
     return () => {
+      clearTimeout(releaseTimer);
       window.removeEventListener("pointermove", onMove);
       document.documentElement.removeEventListener("pointerleave", onLeave);
+      window.removeEventListener("touchstart", onTouch);
+      window.removeEventListener("touchmove", onTouch);
+      window.removeEventListener("touchend", onTouchEnd);
     };
   }, []);
 

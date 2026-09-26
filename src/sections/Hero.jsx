@@ -104,7 +104,9 @@ const Hero = memo(() => {
             </div>
           </div>
 
-          <div className="absolute w-full z-30 bottom-20 right-0">
+          {/* Decorative only; pointer-events-none so this full-width layer doesn't
+              sit on top of the Download Resume / View Work buttons. */}
+          <div className="absolute w-full z-30 bottom-20 right-0 pointer-events-none">
             <div className="flex justify-between items-end">
               <div className="flex flex-col items-center md:gap-5 gap-1">
                 <p className="font-mono uppercase tracking-widest md:text-sm text-xs">Explore</p>
@@ -119,7 +121,7 @@ const Hero = memo(() => {
                 <img
                   src="images/shape.svg"
                   alt="Decorative shape"
-                  className="shape-img theme-invert"
+                  className="shape-img theme-invert size-10 md:size-[100px]"
                 />
                 <div className="overflow-hidden">
                   <h1 className="font-bold text-white-50 lg:text-9xl md:text-7xl sm:text-6xl text-4xl title-text">

@@ -52,6 +52,13 @@ const NavBar = () => {
             </div>
           ))}
         </div>
+        {/* Mobile: sits in the header row itself, not inside the slide-out
+            menu. mr-16 clears SideBar's fixed hamburger (top-7 right-5).
+            Hidden via a wrapper: on the button itself md:hidden lost to its
+            own flex-center display, so desktop showed two toggles. */}
+        <div className="md:hidden mr-16">
+          <ThemeToggle />
+        </div>
         <div className="hidden md:flex items-center gap-4 mr-8">
           <ThemeToggle />
           <a
