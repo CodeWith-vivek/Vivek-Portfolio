@@ -255,6 +255,16 @@ const featuredProjects = [
     links: [{ label: "Code", href: "https://github.com/CodeWith-vivek/crownify2024" }],
   },
   {
+    title: "Solar System – Interactive 3D",
+    img: "images/solar-poster.webp",
+    video: "video/solar-clip.mp4",
+    description:
+      "An interactive, scroll-driven 3D journey through the solar system that ends at a black hole. Scrolling moves the camera from the Sun past each planet and through the asteroid belt, with per-planet voiceover narration synced to scroll position. Visuals use custom GLSL shaders for the Sun and planets, a mouse-distortion effect, bloom post-processing, an asteroid belt and nebula, and Draco-compressed GLTF models, with a lighter asset-loading path so it runs on mobile. I designed the concept, pacing and mobile requirements; the implementation was directed through Claude Code.",
+    focus: "WebGL performance, shader-based visuals, and narrated scroll storytelling.",
+    stacks: ["Three.js", "GLSL", "GSAP", "Lenis", "Vite", "Draco"],
+    links: [],
+  },
+  {
     title: "User Management – Admin Dashboard",
     img: "images/Adminpanel.webp",
     description:

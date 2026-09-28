@@ -17,6 +17,7 @@ dist-ssr
 
 # Local-only backups and caches, not needed to build or run the site
 image-originals/
+raw/
 __pycache__/
 *.pyc
 
