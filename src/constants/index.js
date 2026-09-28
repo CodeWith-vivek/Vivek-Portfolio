@@ -235,6 +235,81 @@ const slides = [
   { id: 8, ...leoSlide },
 ];
 
+const featuredProjects = [
+  {
+    title: "LEO – Local-First AI Assistant",
+    img: "images/leo.svg",
+    description:
+      "A local-first AI personal assistant built as a testbed for evaluating and comparing AI models. It combines LLM chat against local models via Ollama, persistent memory, provider health monitoring, and a real-time voice pipeline with Whisper speech-to-text, dual text-to-speech engines, and barge-in interruption. A bounded tool-calling agent loop with local markdown RAG lets it work over my own notes, and an LLM/voice fallback chain protected by circuit breakers keeps it responsive when a provider fails. Structured as a modular, hexagonal-style architecture across a 4-package monorepo. Directed with Claude Code from my own design and requirements. MCP integration is on the roadmap.",
+    focus: "Local-first AI architecture, model evaluation, resilience, and voice interaction.",
+    stacks: ["Electron", "TypeScript", "Node.js", "Ollama", "Whisper STT", "RAG", "Tool Calling", "Claude Code"],
+    links: [],
+  },
+  {
+    title: "Crownify – E-Commerce Platform",
+    img: "images/crownify.webp",
+    description:
+      "A full-stack e-commerce platform for headwear. I built the original as a server-rendered EJS/MVC app covering the whole shopping flow: OTP and Google login, Razorpay, wallet and Cash on Delivery payments, automated wallet refunds on cancellation, downloadable invoices, and an admin dashboard with role-based access, product/category/order management, and sales analytics. It was later rebuilt with Claude Code as a React SPA on a REST API (SSR on public storefront routes), alongside a layered backend, CSRF/Helmet/rate-limiting hardening, and a Jest, Vitest and Playwright test suite run in GitHub Actions. Deployed first on AWS EC2 behind Nginx, then on Render.",
+    focus: "Complete e-commerce workflow, secure payments, and maintainable architecture.",
+    stacks: ["React", "EJS", "Node.js", "Express", "MongoDB", "Razorpay", "Jest", "Vitest", "Playwright", "GitHub Actions", "AWS EC2", "Nginx", "Render"],
+    links: [{ label: "Code", href: "https://github.com/CodeWith-vivek/crownify2024" }],
+  },
+  {
+    title: "User Management – Admin Dashboard",
+    img: "images/Adminpanel.webp",
+    description:
+      "A full-stack user management system with separate user and admin flows. Users can sign up, log in, and manage their profile, with file uploads handled through Multer. Admins get a dashboard to add, edit, and search users with server-side pagination. Authentication uses JWTs stored in httpOnly, sameSite-strict cookies with bcrypt-hashed passwords, and route guards keep user and admin areas separate and stop logged-in users from reaching the login pages again. Search and pagination run on the server with MongoDB skip/limit, and forms are validated with Formik and Yup.",
+    focus: "Secure authentication, role-based access, and clean admin workflows.",
+    stacks: ["React", "Redux Toolkit", "Formik", "Yup", "Node.js", "Express", "MongoDB", "JWT", "Multer", "bcrypt"],
+    links: [{ label: "Code", href: "https://github.com/CodeWith-vivek/react-userMangement" }],
+  },
+];
+
+const moreProjects = [
+  {
+    title: "Netflix Clone",
+    img: "images/netflix.webp",
+    description:
+      "A Netflix-style streaming interface built with React and Firebase. Users can sign up and log in through Firebase Authentication with client-side form validation and toast feedback, then browse categorized title rows under a hero banner and open a player page to watch. Built as a learning project to practice component structure and authentication flow.",
+    focus: "Authentication flow and component-based UI.",
+    stacks: ["React", "Vite", "Firebase Authentication", "React Toastify"],
+    links: [
+      { label: "Code", href: "https://github.com/CodeWith-vivek/React-netflix-clone" },
+      { label: "Live Demo", href: "https://react-netflix-clone-chi-ten.vercel.app/login" },
+    ],
+  },
+  {
+    title: "OLX Clone",
+    img: "images/olx.webp",
+    description:
+      "A marketplace app inspired by OLX, built with React and Firebase. Users can sign in with Google or email, post items for sale through a Sell form with image upload, browse listings stored in Firestore, open a details page for each item, and save favourites to a wishlist. The UI uses Tailwind CSS with Flowbite React components, and app state is shared through React Context.",
+    focus: "Firebase authentication, listing creation, and a marketplace browsing flow.",
+    stacks: ["React", "Vite", "Firebase Auth", "Firestore", "Tailwind CSS", "Flowbite React", "Context API"],
+    links: [
+      { label: "Code", href: "https://github.com/CodeWith-vivek/react-olx-clone" },
+      { label: "Live Demo", href: "https://react-olx-clone-three.vercel.app/" },
+    ],
+  },
+  {
+    title: "Jaguar Website",
+    img: "images/jaguar.webp",
+    description:
+      "A static homepage recreation of the Jaguar website, built with HTML, CSS, and Bootstrap. A layout and styling exercise focused on reproducing the brand's premium look and page structure.",
+    focus: "Static page layout and styling with HTML, CSS, and Bootstrap.",
+    stacks: ["HTML", "CSS", "Bootstrap"],
+    links: [{ label: "Code", href: "https://github.com/CodeWith-vivek/Jaguar" }],
+  },
+  {
+    title: "Sony Pictures Website",
+    img: "images/sony.webp",
+    description:
+      "A static homepage recreation of the Sony Pictures website, built with HTML and CSS. A layout and styling exercise focused on reproducing the site's structure and entertainment-focused visual design.",
+    focus: "Static page layout and CSS styling.",
+    stacks: ["HTML", "CSS"],
+    links: [{ label: "Code", href: "https://github.com/CodeWith-vivek/sony-pictures" }],
+  },
+];
+
 const footerIconsList = [
   {
     name: "Instagram",
@@ -413,6 +488,8 @@ export {
   bentoSocialLinks,
   iconsList,
   slides,
+  featuredProjects,
+  moreProjects,
   footerIconsList,
   SkillsInfo,
   experiences,

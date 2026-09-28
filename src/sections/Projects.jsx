@@ -3,28 +3,43 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TitleHeader from "../components/TitleHeader";
-import Carousel from "../components/Carousel";
+import ProjectCard from "../components/ProjectCard";
 import GradientSpheres from "../components/GradientSpheres";
+import { featuredProjects, moreProjects } from "../constants";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Projects = () => {
-  const carouselRef = useRef(null);
+  const featuredRef = useRef(null);
+  const moreRef = useRef(null);
 
   useGSAP(
     () => {
-      gsap.from(carouselRef.current, {
+      gsap.from(featuredRef.current.children, {
         opacity: 0,
         y: 60,
         duration: 0.9,
+        stagger: 0.15,
         ease: "power3.out",
         scrollTrigger: {
-          trigger: carouselRef.current,
+          trigger: featuredRef.current,
+          start: "top 85%",
+        },
+      });
+
+      gsap.from(moreRef.current.children, {
+        opacity: 0,
+        y: 60,
+        duration: 0.9,
+        stagger: 0.15,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: moreRef.current,
           start: "top 85%",
         },
       });
     },
-    { scope: carouselRef }
+    { scope: featuredRef }
   );
 
   return (
@@ -41,9 +56,34 @@ const Projects = () => {
             number="04"
             text="A collection of projects that highlight my problem-solving approach and growth as a developer."
           />
-        </div>
-        <div ref={carouselRef} className="md:mt-20 mt-10">
-          <Carousel />
+
+          <h2 className="text-white-50 font-bold md:text-3xl text-2xl uppercase mt-16 mb-6">
+            Featured Projects
+          </h2>
+          <div
+            ref={featuredRef}
+            className="grid md:grid-cols-2 grid-cols-1 gap-6 items-stretch"
+          >
+            {featuredProjects.map((project, i) => (
+              <ProjectCard key={project.title} project={project} index={i + 1} />
+            ))}
+          </div>
+
+          <h2 className="text-white-50 font-bold md:text-2xl text-xl uppercase mt-16 mb-6">
+            More Projects
+          </h2>
+          <div
+            ref={moreRef}
+            className="grid md:grid-cols-2 grid-cols-1 gap-6 items-stretch"
+          >
+            {moreProjects.map((project, i) => (
+              <ProjectCard
+                key={project.title}
+                project={project}
+                index={i + featuredProjects.length + 1}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
