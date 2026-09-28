@@ -80,7 +80,7 @@ const bentoSocialLinks = [
   },
   {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/in/vivek-anand-453bba17a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    href: "https://www.linkedin.com/in/vivek-anand-453bba17a",
     icon: "images/linkedin.svg",
   },
 ];
@@ -169,7 +169,7 @@ const leoSlide = {
   title: "LEO – Local-First AI Assistant",
   img: "images/leo.svg",
   description:
-    "A local-first AI personal assistant with LLM chat, persistent memory, provider health monitoring, and voice input. In progress since Jul 2026.",
+    "Built with Claude Code as a personal testbed for AI models: modular architecture, LLM/voice fallback with circuit breakers, agent loop with local RAG, real-time voice.",
   stacks: ["Electron", "TypeScript", "Node.js", "Ollama"],
 };
 
@@ -243,7 +243,7 @@ const footerIconsList = [
   },
   {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/in/vivek-anand-453bba17a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    href: "https://www.linkedin.com/in/vivek-anand-453bba17a",
     icon: "images/linkedin.svg",
   },
   {
@@ -339,12 +339,10 @@ const experiences = [
     job: "Prime NRI Property Management",
     date: "May 2026 – Sep 2026",
     contents: [
-      "Built the backend and AI/RAG layer of an AI customer-service platform (Next.js 16, TypeScript, Vercel AI SDK, Anthropic Claude, PostgreSQL/pgvector) in a 3-developer team.",
-      "Designed the RAG pipeline for PDF/DOCX parsing, chunking, embeddings, hybrid vector/keyword search, and reranking; fixed a tool-calling loop re-triggering search up to 5x per query, cutting redundant retrieval calls.",
-      "Replaced unstable LLM streaming with a generate-then-verify-then-stream architecture, improving reliability.",
-      "Implemented a 3-layer LLM guardrail system: prompt-injection defense, jailbreak detection, and hallucination checks.",
-      "Developed Zod-typed tool calling for lead capture and knowledge search, plus conversational memory with guest sessions, history compression, and identity handling to prevent context leakage.",
-      "Developed the user-facing frontend (Stitch-based UI) alongside backend and RAG development.",
+      "Owned backend architecture across client and admin domains for a production AI platform built by a 3-developer team, using Next.js, TypeScript, and PostgreSQL/pgvector on Neon.",
+      "Architected the RAG retrieval pipeline – hybrid vector/keyword search and embedding-based reranking – backed by a 3-layer LLM guardrail system spanning prompt-injection defense, jailbreak detection, and hallucination checks.",
+      "Built admin control-plane APIs for lead management, knowledge-base curation, and authentication rate-limiting.",
+      "Identified and patched an unauthenticated PII-enumeration vulnerability; hardened rate-limiting and session-token handling against auth-bypass vectors.",
     ],
   },
   {
@@ -352,9 +350,11 @@ const experiences = [
     job: "Ernest Wells Ltd · UK (Remote)",
     date: "Jun 2026",
     contents: [
-      "Independently built and deployed a production lead-generation site for a UK accountancy firm using Astro 6 SSR, TypeScript, and Tailwind CSS.",
-      "Integrated CloudCannon CMS so non-technical staff could manage content, plus a secure contact form with Google Sheets storage and Resend notifications.",
-      "Managed Vercel deployment, domain configuration, launch, and client handover.",
+      "Independently built and deployed a UK accountancy firm's lead-generation site on Astro 6 (hybrid SSR/static, Vercel), TypeScript, and Tailwind CSS 4, with 20+ reusable components and 9 statically generated service pages from dynamic routes.",
+      "Modeled all content as 18 Zod-validated Astro Content Collections integrated with CloudCannon CMS, letting non-technical staff manage copy, pricing, FAQs, and testimonials independently.",
+      "Built a serverless contact API – honeypot filtering, server-side validation, HTML-escaped output – persisting leads to Google Sheets with Resend notifications, backed by an Alpine.js interactive form.",
+      "Shipped core conversion tools – a 4-step service-recommendation quiz, tax estimator, and pre-filled WhatsApp handoffs – alongside technical SEO via JSON-LD (AccountingService, FAQPage) and Open Graph.",
+      "Managed Vercel deployment, custom domain configuration, launch, and full client handover.",
     ],
   },
   {

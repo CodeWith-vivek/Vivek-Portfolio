@@ -85,7 +85,7 @@ const Hero = memo(() => {
               style={{ pointerEvents: "auto" }}
             >
               <a
-                href="vivek-anand-resume.pdf"
+                href="Vivek_Anand_Resume.pdf"
                 download="Vivek-Anand-Resume.pdf"
                 className="btn-hover btn-primary relative text-base max-[639px]:text-[11px] max-[639px]:px-3 max-[639px]:py-1.5"
                 style={{ zIndex: 9999 }}
