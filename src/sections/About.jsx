@@ -11,6 +11,7 @@ import { bentoSocialLinks } from "../constants";
 import Tilt from "react-parallax-tilt";
 import Cardy from "../components/Cardy";
 import { useRef } from "react";
+import { FiMapPin, FiCalendar, FiBriefcase, FiCode } from "react-icons/fi";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -22,6 +23,25 @@ const Card = ({ title, text }) => (
         {title}
       </h1>
       <p className="md:text-2xl max-w-96 animated-text">{text}</p>
+    </div>
+  </div>
+);
+
+const quickFacts = [
+  { Icon: FiMapPin, label: "Location", value: "Kochi, Kerala" },
+  { Icon: FiCalendar, label: "Experience", value: "2+ Years" },
+  { Icon: FiBriefcase, label: "Status", value: "Open to freelance work" },
+  { Icon: FiCode, label: "Projects", value: "8 Built" },
+];
+
+const QuickFact = (fact) => (
+  <div className="glow-card flex items-center gap-4 rounded-2xl border border-line bg-black-300 p-5">
+    <span className="flex-center w-11 h-11 rounded-xl bg-olive-800 shrink-0">
+      <fact.Icon className="w-5 h-5 text-blue-50" />
+    </span>
+    <div>
+      <p className="text-sm text-muted">{fact.label}</p>
+      <p className="text-white-50 font-semibold">{fact.value}</p>
     </div>
   </div>
 );
@@ -162,7 +182,15 @@ const About = () => {
               </div>
             </div>
 
-          
+            <div id="card" className="col-span-12">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+                {quickFacts.map((fact) => (
+                  <QuickFact key={fact.label} {...fact} />
+                ))}
+              </div>
+            </div>
+
+
             <div className="md:col-span-6 col-span-12 row-span-3">
               <Card
                 title="Development Approach"
