@@ -3,6 +3,7 @@ import * as Z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRef, useState } from "react";
 import { toast } from "react-toastify";
+import { FiSend } from "react-icons/fi";
 
 const contactFormSchema = Z.object({
   name: Z.string().nonempty("Name is required"),
@@ -78,57 +79,63 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="flex-center">
+    <div className="rounded-2xl border border-line bg-black-300 p-8">
       <form
         ref={formRef}
         method="GET"
         target="hidden_iframe"
         onSubmit={handleSubmit(onSubmit)}
-        className="w-full text-muted flex flex-col gap-7"
+        className="flex flex-col gap-6"
       >
-        <div>
-          <label
-            className="block text-white md:text-2xl font-semibold mb-2"
-            htmlFor="name"
-          >
-            Name
-          </label>
-          <input
-            {...register("name")}
-            type="text"
-            id="name"
-            placeholder="Your name"
-            className="w-full px-4 py-4 font-light md:text-base text-sm placeholder:text-white-50/40 bg-black-300 border border-line focus:border-lime focus:outline-none rounded-md"
-            disabled={isSubmitting}
-          />
-          {errors.name && (
-            <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
-          )}
+        <div className="grid sm:grid-cols-2 grid-cols-1 gap-6">
+          <div>
+            <label
+              className="block text-white-50 text-sm font-semibold mb-2"
+              htmlFor="name"
+            >
+              Name
+            </label>
+            <input
+              {...register("name")}
+              type="text"
+              id="name"
+              placeholder="Your name"
+              className="w-full px-4 py-3 font-light text-sm placeholder:text-white-50/40 bg-olive-800 border border-line focus:border-lime focus:outline-none rounded-md"
+              disabled={isSubmitting}
+            />
+            {errors.name && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.name.message}
+              </p>
+            )}
+          </div>
+
+          <div>
+            <label
+              className="block text-white-50 text-sm font-semibold mb-2"
+              htmlFor="email"
+            >
+              Email
+            </label>
+            <input
+              {...register("email")}
+              type="email"
+              id="email"
+              placeholder="your@email.com"
+              className="w-full px-4 py-3 font-light text-sm placeholder:text-white-50/40 bg-olive-800 border border-line focus:border-lime focus:outline-none rounded-md"
+              disabled={isSubmitting}
+            />
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.email.message}
+              </p>
+            )}
+          </div>
         </div>
 
         <div>
           <label
-            className="block text-white md:text-2xl font-semibold mb-2"
-            htmlFor="email"
-          >
-            Email address
-          </label>
-          <input
-            {...register("email")}
-            type="email"
-            id="email"
-            placeholder="Your email"
-            className="w-full px-4 py-4 font-light md:text-base text-sm placeholder:text-white-50/40 bg-black-300 border border-line focus:border-lime focus:outline-none rounded-md"
-            disabled={isSubmitting}
-          />
-          {errors.email && (
-            <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
-          )}
-        </div>
-
-        <div>
-          <label
-            className="block text-white md:text-2xl font-semibold mb-2"
+            className="block text-white-50 text-sm font-semibold mb-2"
             htmlFor="subject"
           >
             Subject
@@ -138,7 +145,7 @@ const ContactForm = () => {
             type="text"
             id="subject"
             placeholder="Subject"
-            className="w-full px-4 py-4 font-light md:text-base text-sm placeholder:text-white-50/40 bg-black-300 border border-line focus:border-lime focus:outline-none rounded-md"
+            className="w-full px-4 py-3 font-light text-sm placeholder:text-white-50/40 bg-olive-800 border border-line focus:border-lime focus:outline-none rounded-md"
             disabled={isSubmitting}
           />
           {errors.subject && (
@@ -150,7 +157,7 @@ const ContactForm = () => {
 
         <div>
           <label
-            className="block text-white md:text-2xl font-semibold mb-2"
+            className="block text-white-50 text-sm font-semibold mb-2"
             htmlFor="message"
           >
             Message
@@ -158,9 +165,9 @@ const ContactForm = () => {
           <textarea
             {...register("message")}
             id="message"
-            placeholder="Your message"
-            rows={5}
-            className="w-full px-4 py-4 font-light md:text-base text-sm placeholder:text-white-50/40 bg-black-300 border border-line focus:border-lime focus:outline-none rounded-md resize-none"
+            placeholder="Tell me about your project or idea..."
+            rows={6}
+            className="w-full px-4 py-3 font-light text-sm placeholder:text-white-50/40 bg-olive-800 border border-line focus:border-lime focus:outline-none rounded-md resize-none"
             disabled={isSubmitting}
           ></textarea>
           {errors.message && (
@@ -173,11 +180,12 @@ const ContactForm = () => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className={`btn-hover w-full py-4 bg-accent-fill text-on-accent font-mono tracking-wider font-semibold rounded-md hover:brightness-110 transition duration-300 ${
+          className={`btn-hover w-full py-3.5 flex-center gap-2 bg-accent-fill text-on-accent font-semibold rounded-md hover:brightness-110 transition duration-300 ${
             isSubmitting ? "opacity-70 cursor-not-allowed" : "cursor-pointer"
           }`}
         >
-          {isSubmitting ? "SENDING..." : "SEND"}
+          {isSubmitting ? "Sending..." : "Send Message"}
+          <FiSend className="w-4 h-4" />
         </button>
       </form>
       <iframe
